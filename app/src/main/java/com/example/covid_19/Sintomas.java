@@ -2,6 +2,7 @@ package com.example.covid_19;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 public class Sintomas extends AppCompatActivity {
@@ -10,5 +11,6 @@ public class Sintomas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sintomas);
+        Intent intent = getIntent();
     }
 }
