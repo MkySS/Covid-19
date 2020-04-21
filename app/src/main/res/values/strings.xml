@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Covid-19</string>
+    <string name="Menu_Title">Covid-19: Medidor de Gravidade</string>
+    <string name="Menu_button">Iniciar</string>
+    <string name="Sintomas_Descricao">Descrição dos Sintomas</string>
+    <string name="Sintomas_principais">"Principais Sintomas "</string>
+    <string name="Sintomas_ex1">Exemplo: Tosse</string>
+    <string name="Sintomas_Secundarios">Sintomas Secundarios</string>
+    <string name="Sintomas_ex2">Exemplo: Fadiga</string>
+    <string name="Sintoma_p1">Sintoma 1</string>
+    <string name="Sintoma_p2">Sintoma 2</string>
+    <string name="Sintoma_p3">Sintoma 3</string>
+    <string name="Button_next">Proximo</string>
+</resources>
