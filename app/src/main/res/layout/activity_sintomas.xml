@@ -32,36 +32,36 @@
         android:id="@+id/textInputLayout"
         android:layout_width="363dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <Spinner
+            android:id="@+id/spinnerS1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/Sintoma_p1" />
+            android:layout_height="51dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <Spinner
+                android:id="@+id/spinnerS2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/Sintoma_p2" />
+                android:layout_height="51dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <Spinner
+                    android:id="@+id/spinnerS3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/Sintoma_p3" />
+                    android:layout_height="51dp" />
             </com.google.android.material.textfield.TextInputLayout>
         </com.google.android.material.textfield.TextInputLayout>
     </com.google.android.material.textfield.TextInputLayout>
@@ -101,35 +101,35 @@
         android:id="@+id/textInputLayout3"
         android:layout_width="363dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <Spinner
+            android:id="@+id/spinnerS4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/Sintoma_p1" />
+            android:layout_height="51dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <Spinner
+                android:id="@+id/spinnerS5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/Sintoma_p2" />
+                android:layout_height="51dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <Spinner
+                    android:id="@+id/spinnerS6"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/Sintoma_p3" />
+                    android:layout_height="51dp" />
             </com.google.android.material.textfield.TextInputLayout>
         </com.google.android.material.textfield.TextInputLayout>
     </com.google.android.material.textfield.TextInputLayout>
@@ -143,4 +143,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

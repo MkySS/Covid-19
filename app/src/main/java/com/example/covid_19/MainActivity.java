@@ -13,8 +13,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    public void passarSintomas(View view) {
-        Intent intent = new Intent(this, Sintomas.class);
+    public void passarMenu(View view) {
+        Intent intent = new Intent(this, Menu.class);
 
         startActivity(intent);
     }

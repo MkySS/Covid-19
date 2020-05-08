@@ -11,4 +11,20 @@
     <string name="Sintoma_p2">Sintoma 2</string>
     <string name="Sintoma_p3">Sintoma 3</string>
     <string name="Button_next">Proximo</string>
+    <string name="s1">Tosse</string>
+    <string name="s2">Febre</string>
+    <string name="s4">Dores Musculares</string>
+    <string name="s3">Dificuldades respiratorias</string>
+    <string name="s5">Cansaço Anormal</string>
+    <string name="s6">Congestão Nasal</string>
+    <string name="s7">Garganta Inflamada</string>
+    <string name="s8">Perda do Olfato ou Paladar</string>
+    <string name="s9">Diarreia</string>
+    <string name="dfSpinner">-- Introduza um Sintoma --</string>
+    <string name="int_sin">Introduzir Sintomas:</string>
+    <string name="int_dcronica">Introduzir Doença Cronica:</string>
+    <string name="button_sintomas">Sintomas</string>
+    <string name="Button_dCronicas">Doenças Cronicas</string>
+    <string name="DCronicas_Descricao">Descrição de Doenças Cronicas</string>
+    <string name="doenca_cronica">Doença Cronicas</string>
 </resources>
