@@ -5,17 +5,17 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-public class BDTableSintomas implements BaseColumns{
-    public static final String NOME_TABELA = "sintomas";
-    public static final String CAMPO_NOME = "Nome";
+public class BDTableRegiao implements BaseColumns{
+    public static final String NOME_TABELA = "Regiao";
+    public static final String CAMPO_NOME_DISTRITO = "Nome";
 
     public static final String CAMPO_ID_COMPLETO = NOME_TABELA + "." + _ID;
-    public static final String CAMPO_NOME_COMPLETO = NOME_TABELA + "." + CAMPO_NOME;
+    public static final String CAMPO_NOME_DISTRITO_COMPLETO = NOME_TABELA + "." + CAMPO_NOME_DISTRITO;
 
-    public static final String[] TODOS_CAMPOS_SINTOMAS = {_ID, CAMPO_NOME_COMPLETO};
+    public static final String[] TODOS_CAMPOS_SINTOMAS = {_ID, CAMPO_NOME_DISTRITO_COMPLETO};
 
     private SQLiteDatabase db;
-    public BDTableSintomas(SQLiteDatabase db) {
+    public BDTableRegiao(SQLiteDatabase db) {
         this.db = db;
     }
 
@@ -23,7 +23,7 @@ public class BDTableSintomas implements BaseColumns{
         db.execSQL(
                 "CREATE TABLE " + NOME_TABELA + " (" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        CAMPO_NOME_COMPLETO + " TEXT NOT NULL" +
+                        CAMPO_NOME_DISTRITO_COMPLETO + " TEXT NOT NULL" +
                         ")"
         );
     }
