@@ -39,6 +39,12 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
         BDTableRegiao tabelaRegiao = new BDTableRegiao(db);
         tabelaRegiao.cria();
 
+        BDTableTipo tabelaTipo = new BDTableTipo(db);
+        tabelaTipo.cria();
+
+        BDTableLocal tabelaLocal = new BDTableLocal(db);
+        tabelaLocal.cria();
+
     }
 
     /**
