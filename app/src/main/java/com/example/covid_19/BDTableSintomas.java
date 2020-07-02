@@ -7,12 +7,14 @@ import android.provider.BaseColumns;
 
 public class BDTableSintomas implements BaseColumns{
     public static final String NOME_TABELA = "sintomas";
-
     public static final String CAMPO_NOME = "Nome";
-    public static final String[] TODOS_CAMPOS = {_ID, CAMPO_NOME};
+
+    public static final String CAMPO_ID_COMPLETO = NOME_TABELA + "." + _ID;
+    public static final String CAMPO_NOME_COMPLETO = NOME_TABELA + "." + CAMPO_NOME;
+
+    public static final String[] TODOS_CAMPOS_SINTOMAS = {_ID, CAMPO_NOME_COMPLETO};
 
     private SQLiteDatabase db;
-
     public BDTableSintomas(SQLiteDatabase db) {
         this.db = db;
     }

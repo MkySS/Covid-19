@@ -35,6 +35,7 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
 
         BDTableDC tabelaDC = new BDTableDC(db);
         tabelaDC.cria();
+
     }
 
     /**
