@@ -6,10 +6,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 public class BDTableDC implements BaseColumns{
-    public static final String NOME_TABELA = "dc";
+    public static final String NOME_TABELA = "DC";
+    public static final String CAMPO_NOME_DC = "Nome";
 
-    public static final String CAMPO_NOME = "Nome";
-    public static final String[] TODOS_CAMPOS = {_ID, CAMPO_NOME};
+    public static final String CAMPO_NOME_DC_COMPLETO = NOME_TABELA + "." + _ID;
+    public static final String[] TODOS_CAMPOS = {_ID, CAMPO_NOME_DC_COMPLETO};
 
     private SQLiteDatabase db;
 
@@ -21,7 +22,7 @@ public class BDTableDC implements BaseColumns{
         db.execSQL(
                 "CREATE TABLE " + NOME_TABELA + " (" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        CAMPO_NOME + " TEXT NOT NULL" +
+                        CAMPO_NOME_DC_COMPLETO + " TEXT NOT NULL" +
                         ")"
         );
     }
