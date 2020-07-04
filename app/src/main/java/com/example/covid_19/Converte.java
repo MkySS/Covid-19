@@ -10,4 +10,11 @@ public class Converte {
 
         return valores;
     }
+    public static ContentValues DCToConverteValues(Doenca_Cronica DC){
+        ContentValues valores = new ContentValues();
+
+        valores.put(BDTableDC.CAMPO_NOME_DC, DC.getNome());
+
+        return valores;
+    }
 }

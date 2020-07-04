@@ -51,6 +51,8 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
 
         PreencheTabelaSintomas(tabelaSintomas);
 
+        PreencheTabelaDC(tabelaDC);
+
         if(DESENVOLVIMENTO){
             seedData(db);
         }
@@ -133,6 +135,11 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
         sintoma = new Sintoma();
         sintoma.setNome(context.getString(R.string.s9));
         long idSinS9 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+    }
+    public void PreencheTabelaDC(BDTableDC tabelaDC){
+
+        Doenca_Cronica DC = new Doenca_Cronica();
 
     }
 
