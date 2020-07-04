@@ -27,4 +27,9 @@
     <string name="Button_dCronicas">Doenças Cronicas</string>
     <string name="DCronicas_Descricao">Descrição de Doenças Cronicas</string>
     <string name="doenca_cronica">Doença Cronicas</string>
+    <string name="DC1">doença cardíaca</string>
+    <string name="DC2">doença pulmonar</string>
+    <string name="DC3">doença oncológica</string>
+    <string name="DC4">hipertensão arterial</string>
+    <string name="DC5">diabetes</string>
 </resources>

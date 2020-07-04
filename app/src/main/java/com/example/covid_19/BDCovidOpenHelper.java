@@ -140,6 +140,24 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
     public void PreencheTabelaDC(BDTableDC tabelaDC){
 
         Doenca_Cronica DC = new Doenca_Cronica();
+        DC.setNome(context.getString(R.string.DC1));
+        long idDoenDC1 = tabelaDC.insert(Converte.DCToConverteValues(DC));
+
+        DC = new Doenca_Cronica();
+        DC.setNome(context.getString(R.string.DC2));
+        long idDoenDC2 = tabelaDC.insert(Converte.DCToConverteValues(DC));
+
+        DC = new Doenca_Cronica();
+        DC.setNome(context.getString(R.string.DC3));
+        long idDoenDC3 = tabelaDC.insert(Converte.DCToConverteValues(DC));
+
+        DC = new Doenca_Cronica();
+        DC.setNome(context.getString(R.string.DC4));
+        long idDoenDC4 = tabelaDC.insert(Converte.DCToConverteValues(DC));
+
+        DC = new Doenca_Cronica();
+        DC.setNome(context.getString(R.string.DC5));
+        long idDoenDC5 = tabelaDC.insert(Converte.DCToConverteValues(DC));
 
     }
 
