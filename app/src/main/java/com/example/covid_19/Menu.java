@@ -14,12 +14,12 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
     }
     public void passarSintomas(View view) {
-        Intent intentS = new Intent(this, Sintomas.class);
+        Intent intentS = new Intent(this, Display_Sintomas.class);
 
         startActivity(intentS);
     }
     public void passarDCronicas(View view) {
-        Intent intentDC = new Intent(this, Doenca_cronica.class);
+        Intent intentDC = new Intent(this, Display_Doenca_cronica.class);
 
         startActivity(intentDC);
     }

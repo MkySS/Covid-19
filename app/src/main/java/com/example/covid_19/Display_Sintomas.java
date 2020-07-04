@@ -13,7 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sintomas extends AppCompatActivity {
+public class Display_Sintomas extends AppCompatActivity {
 
     Spinner dropdownSintomasP1;
     Spinner dropdownSintomasP2;
@@ -66,7 +66,7 @@ public class Sintomas extends AppCompatActivity {
 
                 String strSintoma1 = parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(Sintomas.this, "Selecionado: "+strSintoma1, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Display_Sintomas.this, "Selecionado: "+strSintoma1, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -80,7 +80,7 @@ public class Sintomas extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String strSintoma2 = parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(Sintomas.this, "Selecionado: "+strSintoma2, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Display_Sintomas.this, "Selecionado: "+strSintoma2, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -93,7 +93,7 @@ public class Sintomas extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String strSintoma3 = parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(Sintomas.this, "Selecionado: "+strSintoma3, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Display_Sintomas.this, "Selecionado: "+strSintoma3, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -106,7 +106,7 @@ public class Sintomas extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String strSintoma4 = parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(Sintomas.this, "Selecionado: "+strSintoma4, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Display_Sintomas.this, "Selecionado: "+strSintoma4, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -119,7 +119,7 @@ public class Sintomas extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String strSintoma5 = parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(Sintomas.this, "Selecionado: "+strSintoma5, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Display_Sintomas.this, "Selecionado: "+strSintoma5, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -132,7 +132,7 @@ public class Sintomas extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String strSintoma6 = parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(Sintomas.this, "Selecionado: "+strSintoma6, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Display_Sintomas.this, "Selecionado: "+strSintoma6, Toast.LENGTH_SHORT).show();
             }
 
             @Override

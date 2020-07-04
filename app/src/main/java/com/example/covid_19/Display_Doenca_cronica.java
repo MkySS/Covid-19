@@ -13,7 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Doenca_cronica extends AppCompatActivity {
+public class Display_Doenca_cronica extends AppCompatActivity {
 
     Spinner dropdownDoencasC;
     Spinner dropdownDoencasC2;
@@ -55,7 +55,7 @@ public class Doenca_cronica extends AppCompatActivity {
 
                 String strDC1 = parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(Doenca_cronica.this, "Selecionado: "+strDC1, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Display_Doenca_cronica.this, "Selecionado: "+strDC1, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -69,7 +69,7 @@ public class Doenca_cronica extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String strDC2 = parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(Doenca_cronica.this, "Selecionado: "+strDC2, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Display_Doenca_cronica.this, "Selecionado: "+strDC2, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -83,7 +83,7 @@ public class Doenca_cronica extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String strDC3 = parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(Doenca_cronica.this, "Selecionado: "+strDC3, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Display_Doenca_cronica.this, "Selecionado: "+strDC3, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -97,7 +97,7 @@ public class Doenca_cronica extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String strDC4 = parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(Doenca_cronica.this, "Selecionado: "+strDC4, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Display_Doenca_cronica.this, "Selecionado: "+strDC4, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -111,7 +111,7 @@ public class Doenca_cronica extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String strDC5 = parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(Doenca_cronica.this, "Selecionado: "+strDC5, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Display_Doenca_cronica.this, "Selecionado: "+strDC5, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -125,7 +125,7 @@ public class Doenca_cronica extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String strDC6 = parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(Doenca_cronica.this, "Selecionado: "+strDC6, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Display_Doenca_cronica.this, "Selecionado: "+strDC6, Toast.LENGTH_SHORT).show();
 
             }
 

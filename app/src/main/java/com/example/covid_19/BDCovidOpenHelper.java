@@ -46,6 +46,9 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
         tabelaLocal.cria();
 
     }
+    private void seedData(SQLiteDatabase db){
+        BDTableSintomas tabelaSintomas = new BDTableSintomas(db);
+    }
 
     /**
      * Called when the database needs to be upgraded. The implementation
