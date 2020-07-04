@@ -9,6 +9,9 @@ import androidx.annotation.Nullable;
 public class BDCovidOpenHelper extends SQLiteOpenHelper {
     public static final String NOME_BASE_DADOS = "Covid.db";
     public static final int VERSAO_BASE_DADOS = 1;
+    private static final boolean DESENVOLVIMENTO = true;
+    private final Context context;
+
 
     /**
      * Create a helper object to create, open, and/or manage a database.
@@ -20,6 +23,7 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
      */
     public BDCovidOpenHelper(@Nullable Context context) {
         super(context, NOME_BASE_DADOS, null, VERSAO_BASE_DADOS);
+        this.context = context;
     }
 
     /**
@@ -45,9 +49,91 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
         BDTableLocal tabelaLocal = new BDTableLocal(db);
         tabelaLocal.cria();
 
+        PreencheTabelaSintomas(tabelaSintomas);
+
+        if(DESENVOLVIMENTO){
+            seedData(db);
+        }
     }
+
     private void seedData(SQLiteDatabase db){
-        BDTableSintomas tabelaSintomas = new BDTableSintomas(db);
+        /*BDTableSintomas tabelaSintomas = new BDTableSintomas(db);
+
+        Sintoma sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s1));
+        long idSinS1 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s2));
+        long idSinS2 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s3));
+        long idSinS3 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s4));
+        long idSinS4 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s5));
+        long idSinS5 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s6));
+        long idSinS6 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s7));
+        long idSinS7 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s8));
+        long idSinS8 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s9));
+        long idSinS9 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));*/
+
+    }
+    public void PreencheTabelaSintomas(BDTableSintomas tabelaSintomas){
+
+        Sintoma sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s1));
+        long idSinS1 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s2));
+        long idSinS2 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s3));
+        long idSinS3 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s4));
+        long idSinS4 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s5));
+        long idSinS5 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s6));
+        long idSinS6 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s7));
+        long idSinS7 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s8));
+        long idSinS8 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
+        sintoma = new Sintoma();
+        sintoma.setNome(context.getString(R.string.s9));
+        long idSinS9 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+
     }
 
     /**
