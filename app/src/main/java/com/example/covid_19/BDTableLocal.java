@@ -8,6 +8,7 @@ import android.provider.BaseColumns;
 public class BDTableLocal implements BaseColumns {
     public static final String NOME_TABELA = "Local";
     public static final String CAMPO_LOCAL_NOME = "Nome";
+    public static final String CAMPO_NOME_RUA = "Rua";
     public static final String CAMPO_DISTRITO = "Distrito";
     public static final String CAMPO_TIPO = "Tipo";
     public static final String ID_REGIAO = "id_regiao";
@@ -15,6 +16,7 @@ public class BDTableLocal implements BaseColumns {
 
     public static final String CAMPO_ID_COMPLETO = NOME_TABELA + "." + _ID;
     public static final String CAMPO_LOCAL_NOME_COMPLETO = NOME_TABELA + "." + CAMPO_LOCAL_NOME;
+    public static final String CAMPO_NOME_RUA_COMPLETO = NOME_TABELA + "." + CAMPO_NOME_RUA;
     public static final String CAMPO_DISTRITO_COMPLETO = BDTableRegiao.CAMPO_ID_COMPLETO + " AS " + CAMPO_DISTRITO;
     public static final String CAMPO_TIPO_COMPLETO = BDTableLocal.CAMPO_ID_COMPLETO + " AS " + CAMPO_TIPO;
 
@@ -30,6 +32,7 @@ public class BDTableLocal implements BaseColumns {
                 "CREATE TABLE " + NOME_TABELA + " (" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         CAMPO_LOCAL_NOME_COMPLETO + " TEXT NOT NULL" +
+                        CAMPO_NOME_RUA_COMPLETO + " TEXT NOT NULL" +
                         ID_REGIAO + " INTEGER NOT NULL," +
                         "FOREIGN KEY (" + ID_REGIAO + ") REFERENCES " +
                         BDTableRegiao.CAMPO_NOME_DISTRITO_COMPLETO + "(" + BDTableRegiao._ID +
