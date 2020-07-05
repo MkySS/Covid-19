@@ -6,13 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AdaptadorLocal {
+public class AdaptadorLocal extends RecyclerView.Adapter<AdaptadorLocal.ViewHolderLocal>{
 
-    /*private final Context context;extends RecyclerView.Adapter<AdaptadorLocal.ViewHolderLocal>
+    private final Context context;
     private Cursor cursor = null;
 
     public AdaptadorLocal(Context context) {
@@ -45,10 +46,10 @@ public class AdaptadorLocal {
      * @see #getItemViewType(int)
      * @see #onBindViewHolder(ViewHolder, int)
      */
-    /*@NonNull
+    @NonNull
     @Override
     public ViewHolderLocal onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemLocal = LayoutInflater.from(context).inflate(R.layout.item_Local, parent, false);
+        View itemLocal = LayoutInflater.from(context).inflate(R.layout.item_local, parent, false);
         return new ViewHolderLocal(itemLocal);
     }
 
@@ -72,7 +73,7 @@ public class AdaptadorLocal {
      *                 item at the given position in the data set.
      * @param position The position of the item within the adapter's data set.
      */
-    /*@Override
+    @Override
     public void onBindViewHolder(@NonNull AdaptadorLocal.ViewHolderLocal holder, int position) {
         cursor.moveToPosition(position);
         Local local = Converte.cursorToLocal(cursor);
@@ -84,7 +85,7 @@ public class AdaptadorLocal {
      *
      * @return The total number of items in this adapter.
      */
-    /*@Override
+    @Override
     public int getItemCount() {
         if (cursor == null){
             return 0;
@@ -100,10 +101,29 @@ public class AdaptadorLocal {
 
     public class ViewHolderLocal extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private Noticia noticia = null;
+        private Local local = null;
+
+        private final TextView textViewNome;
+        private final TextView textViewRua;
+        private final TextView textViewTipo;
+        private final TextView textViewDistrito;
 
         public ViewHolderLocal(@NonNull View itemView) {
             super(itemView);
+
+            textViewNome = (TextView) itemView.findViewById(R.id.textViewNome);
+            textViewRua = (TextView) itemView.findViewById(R.id.textViewRua);
+            textViewTipo = (TextView) itemView.findViewById(R.id.textViewTipo);
+            textViewDistrito = (TextView) itemView.findViewById(R.id.textViewDistrito);
+            itemView.setOnClickListener(this);
+        }
+
+        public void setLocal(Local local) {
+            this.local = local;
+            textViewNome.setText(local.getNome());
+            textViewRua.setText(local.getRua());
+            textViewTipo.setText(local.getTipo());
+            textViewDistrito.setText(local.getDistrito());
         }
 
         /**
@@ -111,9 +131,28 @@ public class AdaptadorLocal {
          *
          * @param v The view that was clicked.
          */
-        /*@Override
+        @Override
         public void onClick(View v) {
+            if (viewHolderLocalSelecionado == this) {
+                return;
+            }
 
+            if (viewHolderLocalSelecionado != null) {
+                viewHolderLocalSelecionado.desSelecionado();
+            }
+
+            viewHolderLocalSelecionado = this;
+            seleciona();
+
+            LocalView localView = (LocalView) AdaptadorLocal.this.context;
         }
-    }*/
+
+        private void seleciona() {
+            itemView.setBackgroundResource(R.color.colorAccent);
+        }
+
+        private void desSelecionado() {
+            itemView.setBackgroundResource(android.R.color.white);
+        }
+    }
 }

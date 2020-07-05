@@ -35,4 +35,10 @@
     <string name="LOCAL">Local</string>
     <string name="buttonVerData">Ver Data</string>
     <string name="Avaliar">Avaliação</string>
+    <string name="Insert">Inserir</string>
+    <string name="Update">Editar</string>
+    <string name="delete">Eliminar</string>
+    <string name="Street">Rua:</string>
+    <string name="TipoU">Tipo de Unidade:</string>
+    <string name="DistritoA">Distrito:</string>
 </resources>
