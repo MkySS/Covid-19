@@ -6,65 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".Menu2">
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="@string/LOCAL"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="167dp"
-        android:layout_height="267dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView11"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:srcCompat="@drawable/portugal" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="96dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="16dp"
-        android:hint="@string/buttonVerData"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:hint="@string/LOCAL"
+                android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="@string/Avaliar"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView11"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="267dp"
+                android:layout_marginTop="16dp"
+                app:srcCompat="@drawable/portugal" />
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="304dp"
-        android:layout_height="206dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
-        app:srcCompat="@drawable/gettyimages_1212213054" />
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="96dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/buttonVerData" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="86dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/Menu_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:hint="@string/Avaliar"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="match_parent"
+                android:layout_height="206dp"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal"
+                app:srcCompat="@drawable/gettyimages_1212213054" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="86dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/Menu_button" />
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

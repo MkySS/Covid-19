@@ -2,15 +2,13 @@ package com.example.covid_19;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-public class Menu2 extends AppCompatActivity {
+public class LocalView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_local_view);
     }
-    Intent intentM = getIntent();
 }
