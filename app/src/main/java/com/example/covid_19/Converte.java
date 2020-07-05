@@ -17,4 +17,11 @@ public class Converte {
 
         return valores;
     }
+    public static ContentValues DistritoToConverteValues(Regiao Distrito){
+        ContentValues valores = new ContentValues();
+
+        valores.put(BDTableRegiao.CAMPO_NOME_DISTRITO, Distrito.getDistrito());
+
+        return valores;
+    }
 }

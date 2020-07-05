@@ -53,6 +53,8 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
 
         PreencheTabelaDC(tabelaDC);
 
+        PreencheTabelaRegiao(tabelaRegiao);
+
         if(DESENVOLVIMENTO){
             seedData(db);
         }
@@ -159,6 +161,80 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
         DC.setNome(context.getString(R.string.DC5));
         long idDoenDC5 = tabelaDC.insert(Converte.DCToConverteValues(DC));
 
+    }
+    public void PreencheTabelaRegiao(BDTableRegiao tabelaRegiao){
+
+        Regiao Distrito = new Regiao();
+        Distrito.setDistrito("Aveiro");
+        long idDist1 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Beja");
+        long idDist2 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Braga");
+        long idDist3 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Bragança");
+        long idDist4 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Castelo Branco");
+        long idDist5 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Coimbra");
+        long idDist6 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Évora");
+        long idDist7 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Faro");
+        long idDist8 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Guarda");
+        long idDist9 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Leiria");
+        long idDist10 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Lisboa");
+        long idDist11 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Portalegre");
+        long idDist12 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Porto");
+        long idDist13 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Santarém");
+        long idDist14 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Setúbal");
+        long idDist15 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Viana do Castelo");
+        long idDist16 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Vila Real");
+        long idDist17 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+
+        Distrito = new Regiao();
+        Distrito.setDistrito("Viseu");
+        long idDist18 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
     }
 
     /**
