@@ -55,6 +55,8 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
 
         PreencheTabelaRegiao(tabelaRegiao);
 
+        PrencheTabelaTipo(tabelaTipo);
+
         if(DESENVOLVIMENTO){
             seedData(db);
         }
@@ -162,6 +164,7 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
         long idDoenDC5 = tabelaDC.insert(Converte.DCToConverteValues(DC));
 
     }
+
     public void PreencheTabelaRegiao(BDTableRegiao tabelaRegiao){
 
         Regiao Distrito = new Regiao();
@@ -235,6 +238,25 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
         Distrito = new Regiao();
         Distrito.setDistrito("Viseu");
         long idDist18 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
+    }
+
+    private void PrencheTabelaTipo(BDTableTipo tabelaTipo){
+
+        Tipo tipo = new Tipo();
+        tipo.setTipo("Hospital");
+        long idTip1 = tabelaTipo.insert(Converte.TipoToConverteValues(tipo));
+
+        tipo = new Tipo();
+        tipo.setTipo("Centro de Saude");
+        long idTip2 = tabelaTipo.insert(Converte.TipoToConverteValues(tipo));
+
+        tipo = new Tipo();
+        tipo.setTipo("Fármacia");
+        long idTip3 = tabelaTipo.insert(Converte.TipoToConverteValues(tipo));
+
+        tipo = new Tipo();
+        tipo.setTipo("Centro de Rastreio Móvel");
+        long idTip4 = tabelaTipo.insert(Converte.TipoToConverteValues(tipo));
     }
 
     /**

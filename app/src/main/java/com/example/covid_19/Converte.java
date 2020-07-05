@@ -24,4 +24,11 @@ public class Converte {
 
         return valores;
     }
+    public static ContentValues TipoToConverteValues(Tipo tipo){
+        ContentValues valores = new ContentValues();
+
+        valores.put(BDTableTipo.CAMPO_TIPO_NOME, tipo.getTipo());
+
+        return valores;
+    }
 }
