@@ -23,5 +23,4 @@ public class Menu extends AppCompatActivity {
 
         startActivity(intentDC);
     }
-    Intent intent = getIntent();
 }

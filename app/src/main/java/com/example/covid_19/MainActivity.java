@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public void passarMenu(View view) {
-        Intent intent = new Intent(this, Menu.class);
+        Intent intentM = new Intent(this, Menu2.class);
 
-        startActivity(intent);
+        startActivity(intentM);
     }
 }
