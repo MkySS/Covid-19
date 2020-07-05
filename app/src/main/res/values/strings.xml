@@ -32,4 +32,7 @@
     <string name="DC3">doença oncológica</string>
     <string name="DC4">hipertensão arterial</string>
     <string name="DC5">diabetes</string>
+    <string name="LOCAL">Local</string>
+    <string name="buttonVerData">Ver Data</string>
+    <string name="Avaliar">Avaliação</string>
 </resources>
