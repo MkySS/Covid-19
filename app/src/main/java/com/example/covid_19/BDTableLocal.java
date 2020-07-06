@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
+import android.text.TextUtils;
+
+import java.util.Arrays;
 
 public class BDTableLocal implements BaseColumns {
     public static final String NOME_TABELA_LOCAL = "Local";
@@ -15,10 +18,12 @@ public class BDTableLocal implements BaseColumns {
     public static final String CAMPO_ID_COMPLETO = NOME_TABELA_LOCAL + "." + _ID;
     public static final String CAMPO_LOCAL_NOME_COMPLETO = NOME_TABELA_LOCAL + "." + CAMPO_LOCAL_NOME;
     public static final String CAMPO_NOME_RUA_COMPLETO = NOME_TABELA_LOCAL + "." + CAMPO_NOME_RUA;
+    public static final String CAMPO_ID_REGIAO_COMPLETO = NOME_TABELA_LOCAL + "." + ID_REGIAO;
+    public static final String CAMPO_ID_TIPO_COMPLETO = NOME_TABELA_LOCAL + "." + ID_TIPO;
     public static final String CAMPO_DISTRITO_COMPLETO = BDTableRegiao.NOME_TABELA_REGIAO + "." + BDTableRegiao.CAMPO_NOME_DISTRITO;
     public static final String CAMPO_TIPO_COMPLETO = BDTableTipo.NOME_TABELA_TIPO + "." + BDTableTipo.CAMPO_TIPO_NOME;
 
-    public static final String[] TODOS_CAMPOS_LOCAL = {CAMPO_ID_COMPLETO, CAMPO_LOCAL_NOME_COMPLETO, CAMPO_NOME_RUA_COMPLETO, CAMPO_DISTRITO_COMPLETO, CAMPO_TIPO_COMPLETO};
+    public static final String[] TODOS_CAMPOS_LOCAL = {CAMPO_ID_COMPLETO, CAMPO_LOCAL_NOME_COMPLETO, CAMPO_NOME_RUA_COMPLETO, CAMPO_DISTRITO_COMPLETO, CAMPO_TIPO_COMPLETO, CAMPO_ID_REGIAO_COMPLETO,CAMPO_ID_TIPO_COMPLETO};
 
     private SQLiteDatabase db;
     public BDTableLocal(SQLiteDatabase db) {
@@ -26,19 +31,19 @@ public class BDTableLocal implements BaseColumns {
     }
 
     public void cria() {
-        db.execSQL(
-                "CREATE TABLE " + NOME_TABELA_LOCAL + " (" +
-                        _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        CAMPO_LOCAL_NOME + " TEXT NOT NULL, " +
-                        CAMPO_NOME_RUA + " TEXT NOT NULL, " +
-                        ID_REGIAO + " INTEGER NOT NULL, " +
-                        ID_TIPO + " INTEGER NOT NULL, " +
-                        "FOREIGN KEY (" + ID_REGIAO + ") REFERENCES " +
-                        BDTableRegiao.NOME_TABELA_REGIAO + "(" + BDTableRegiao._ID + ")," +
-                        "FOREIGN KEY (" + ID_TIPO + ") REFERENCES " +
-                        BDTableTipo.NOME_TABELA_TIPO + "(" + BDTableTipo._ID + ")" +
-                        ")"
+        db.execSQL(  "CREATE TABLE " + NOME_TABELA_LOCAL + " (" +
+                _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                CAMPO_LOCAL_NOME + " TEXT NOT NULL, " +
+                CAMPO_NOME_RUA + " TEXT NOT NULL, " +
+                ID_REGIAO + " INTEGER NOT NULL, " +
+                ID_TIPO + " INTEGER NOT NULL, " +
+                "FOREIGN KEY (" + ID_REGIAO + ") REFERENCES " +
+                BDTableRegiao.NOME_TABELA_REGIAO + "(" + BDTableRegiao._ID + ")," +
+                "FOREIGN KEY (" + ID_TIPO + ") REFERENCES " +
+                BDTableTipo.NOME_TABELA_TIPO + "(" + BDTableTipo._ID + ")" +
+                ")"
         );
+
     }
 
     /**
@@ -83,7 +88,34 @@ public class BDTableLocal implements BaseColumns {
     public Cursor query(String[] columns, String selection,
                         String[] selectionArgs, String groupBy, String having,
                         String orderBy) {
-        return db.query(NOME_TABELA_LOCAL, columns, selection, selectionArgs, groupBy, having, orderBy);
+
+        if(!Arrays.asList(columns).contains(CAMPO_DISTRITO_COMPLETO)) {
+            return db.query(NOME_TABELA_LOCAL, columns, selection, selectionArgs, groupBy, having, orderBy);
+        }
+        String campos = TextUtils.join(",", columns);
+
+
+        String sql = "SELECT " + campos;
+        sql += " FROM " + NOME_TABELA_LOCAL + " INNER JOIN " + BDTableRegiao.NOME_TABELA_REGIAO + " INNER JOIN " + BDTableTipo.NOME_TABELA_TIPO;
+        sql += " ON " + CAMPO_ID_REGIAO_COMPLETO + "=" + BDTableRegiao.CAMPO_ID_COMPLETO + "=" + BDTableTipo.CAMPO_ID_COMPLETO;
+
+        if (selection != null) {
+            sql += " WHERE " + selection;
+        }
+
+        if (groupBy != null) {
+            sql += " GROUP BY " + groupBy;
+
+            if (having != null) {
+                sql += " HAVING " + having;
+            }
+        }
+
+        if (orderBy != null) {
+            sql += " ORDER BY " + orderBy;
+        }
+
+        return db.rawQuery(sql, selectionArgs);
     }
 
     /**

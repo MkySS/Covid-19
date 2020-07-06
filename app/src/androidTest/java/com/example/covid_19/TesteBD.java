@@ -288,4 +288,183 @@ public class TesteBD {
 
         bd.close();
     }
+    private long insereSintoma(BDTableSintomas tableSintomas, Sintoma sintoma){
+        long id = tableSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+        assertNotEquals(-1, id);
+
+        return id;
+    }
+
+    private long insereSintoma(BDTableSintomas tabelaSintomas, String nome_sintoma){
+        Sintoma sintoma = new Sintoma();
+        sintoma.setNome(nome_sintoma);
+
+        return insereSintoma(tabelaSintomas, sintoma);
+    }
+    @Test
+    public void consegueInserirSintoma(){
+        Context appContext = getTargetContext();
+
+        BDCovidOpenHelper openHelper = new BDCovidOpenHelper(appContext);
+        SQLiteDatabase bd = openHelper.getWritableDatabase();
+
+        BDTableSintomas tabelaSintomas = new BDTableSintomas(bd);
+
+        insereSintoma(tabelaSintomas, "Tosse");
+
+        bd.close();
+    }
+    @Test
+    public void conseguirLerSintoma(){
+        Context appContext = getTargetContext();
+        BDCovidOpenHelper openHelper = new BDCovidOpenHelper(appContext);
+        SQLiteDatabase db = openHelper.getWritableDatabase();
+
+        BDTableSintomas tabelaSintomas = new BDTableSintomas(db);
+
+        Cursor cursor = tabelaSintomas.query(BDTableSintomas.TODOS_CAMPOS_SINTOMAS, null,null,null,null, null);
+        int registos = cursor.getCount();
+        cursor.close();
+
+        insereSintoma(tabelaSintomas, "Febre");
+
+        cursor = tabelaSintomas.query(BDTableSintomas.TODOS_CAMPOS_SINTOMAS, null,null,null,null,null);
+        assertEquals(registos + 1, cursor.getCount());
+        cursor.close();
+
+        db.close();
+    }
+    @Test
+    public void consegueAlterarSintoma(){
+        Context appContext = getTargetContext();
+
+        BDCovidOpenHelper openHelper = new BDCovidOpenHelper(appContext);
+        SQLiteDatabase bd = openHelper.getWritableDatabase();
+
+        BDTableSintomas tabelaSintomas = new BDTableSintomas(bd);
+
+        Sintoma sintoma = new Sintoma();
+        sintoma.setNome("Teste");
+
+        long id = insereSintoma(tabelaSintomas, sintoma);
+
+        sintoma.setNome("Dores Musculares");
+        int registosAfetados = tabelaSintomas.update(Converte.SintomaaToConverteValues(sintoma), BDTableSintomas._ID + "=?", new String[]{String.valueOf(id)});
+        assertEquals(1, registosAfetados);
+
+        bd.close();
+    }
+
+    @Test
+    public void consegueEliminarSintoma(){
+        Context appContext = getTargetContext();
+
+        BDCovidOpenHelper openHelper = new BDCovidOpenHelper(appContext);
+        SQLiteDatabase bd = openHelper.getWritableDatabase();
+
+        BDTableSintomas tabelaSintoma = new BDTableSintomas(bd);
+
+        long id = insereSintoma(tabelaSintoma, "Teste");
+
+        int registosEliminados = tabelaSintoma.delete(BDTableTipo._ID + "=?", new String[]{String.valueOf(id)});
+        assertEquals(1, registosEliminados);
+
+        bd.close();
+    }
+    private long insereLocal(SQLiteDatabase bd, String nome_local, String rua, String Nome_Regiao, String Nome_tipo){
+        BDTableRegiao tabelaRegiao = new BDTableRegiao(bd);
+        BDTableTipo tabelaTipo = new BDTableTipo(bd);
+
+        long idRegiao = insereRegiao(tabelaRegiao, Nome_Regiao);
+        long idTipo = insereTipo(tabelaTipo, Nome_tipo);
+
+        Local local = new Local();
+        local.setNome(nome_local);
+        local.setRua(rua);
+        local.setId_regiao(idRegiao);
+        local.setId_tipo(idTipo);
+
+        BDTableLocal tabelaLocal = new BDTableLocal(bd);
+        long id = tabelaLocal.insert(Converte.localToContentValues(local));
+        assertNotEquals(-1, id);
+
+        return id;
+    }
+
+    @Test
+    public void consegueInserirLocal(){
+        Context appContext = getTargetContext();
+
+        BDCovidOpenHelper openHelper = new BDCovidOpenHelper(appContext);
+        SQLiteDatabase bd = openHelper.getWritableDatabase();
+
+        insereLocal(bd, "Hospital de S.João", "Alameda Prof. Hernâni Monteiro", "Porto", "Hospital");
+
+        bd.close();
+    }
+
+    @Test
+    public void consegueLerLocal(){
+        Context appContext = getTargetContext();
+
+        BDCovidOpenHelper openHelper = new BDCovidOpenHelper(appContext);
+        SQLiteDatabase bd = openHelper.getWritableDatabase();
+
+        BDTableLocal tabelaLocal = new BDTableLocal(bd);
+
+        Cursor cursor = tabelaLocal.query(BDTableLocal.TODOS_CAMPOS_LOCAL, null,null,null,null,null);
+        int registos = cursor.getCount();
+        cursor.close();
+
+        insereLocal(bd, "Centro de Saude Serpa Pinto", "Rua de Serpa Pinto", "Porto", "Centro de saude");
+
+        cursor = tabelaLocal.query(BDTableLocal.TODOS_CAMPOS_LOCAL, null,null,null,null,null);
+        assertEquals(registos + 1, cursor.getCount());
+        cursor.close();
+
+        bd.close();
+    }
+
+    @Test
+    public void consegueAlterarLocal(){
+        Context appContext = getTargetContext();
+
+        BDCovidOpenHelper openHelper = new BDCovidOpenHelper(appContext);
+        SQLiteDatabase bd = openHelper.getWritableDatabase();
+
+        long idLocal = insereLocal(bd, "TESTE", "TESTE", "TESTE", "TESTE");
+
+        BDTableLocal tabelaLocal = new BDTableLocal(bd);
+
+        Cursor cursor = tabelaLocal.query(BDTableLocal.TODOS_CAMPOS_LOCAL, BDTableLocal.CAMPO_ID_COMPLETO + "=?", new String[]{ String.valueOf(idLocal) }, null,null,null);
+        assertEquals(1, cursor.getCount());
+
+        assertTrue(cursor.moveToNext());
+        Local local = Converte.cursorToLocal(cursor);
+        cursor.close();
+
+        assertEquals("Hospital", local.getNome());
+
+        local.setNome("Hospital Santo Antonio");
+        int registosAfetados = tabelaLocal.update(Converte.localToContentValues(local), BDTableLocal.CAMPO_ID_COMPLETO + "=?", new String[]{String.valueOf(local.getId())});
+        assertEquals(1, registosAfetados);
+
+        bd.close();
+    }
+
+    @Test
+    public void consegueEliminarLocal(){
+        Context appContext = getTargetContext();
+
+        BDCovidOpenHelper openHelper = new BDCovidOpenHelper(appContext);
+        SQLiteDatabase bd = openHelper.getWritableDatabase();
+
+        long id = insereLocal(bd, "Hostipal Santo Antonio", "Largo do Prof. Abel Salazar", "Porto", "Hospital");
+
+        BDTableLocal tabelaLocal = new BDTableLocal(bd);
+        int registosEliminados = tabelaLocal.delete(BDTableLocal._ID + "=?", new String[]{String.valueOf(id)});
+        assertEquals(1, registosEliminados);
+
+        bd.close();
+    }
 }

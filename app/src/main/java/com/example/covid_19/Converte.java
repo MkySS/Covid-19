@@ -33,6 +33,17 @@ public class Converte {
         return valores;
     }
 
+    public static ContentValues localToContentValues(Local local){
+        ContentValues valores = new ContentValues();
+
+        valores.put(BDTableLocal.ID_REGIAO, local.getId_regiao());
+        valores.put(BDTableLocal.ID_TIPO, local.getId_tipo());
+        valores.put(BDTableLocal.CAMPO_LOCAL_NOME, local.getNome());
+        valores.put(BDTableLocal.CAMPO_NOME_RUA, local.getRua());
+
+        return valores;
+    }
+
     public static Local cursorToLocal(Cursor cursor) {
         Local local = new Local();
         local.setId(cursor.getInt(cursor.getColumnIndex(BDTableLocal._ID)));
