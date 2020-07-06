@@ -6,13 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 public class BDTableRegiao implements BaseColumns{
-    public static final String NOME_TABELA = "Regiao";
+    public static final String NOME_TABELA_REGIAO = "Regiao";
     public static final String CAMPO_NOME_DISTRITO = "Nome";
 
-    public static final String CAMPO_ID_COMPLETO = NOME_TABELA + "." + _ID;
-    public static final String CAMPO_NOME_DISTRITO_COMPLETO = NOME_TABELA + "." + CAMPO_NOME_DISTRITO;
+    public static final String CAMPO_ID_COMPLETO = NOME_TABELA_REGIAO + "." + _ID;
+    public static final String CAMPO_NOME_DISTRITO_COMPLETO = NOME_TABELA_REGIAO + "." + CAMPO_NOME_DISTRITO;
 
-    public static final String[] TODOS_CAMPOS_REGIAO = {_ID, CAMPO_NOME_DISTRITO_COMPLETO};
+    public static final String[] TODOS_CAMPOS_REGIAO = {CAMPO_ID_COMPLETO, CAMPO_NOME_DISTRITO_COMPLETO};
 
     private SQLiteDatabase db;
     public BDTableRegiao(SQLiteDatabase db) {
@@ -21,9 +21,9 @@ public class BDTableRegiao implements BaseColumns{
 
     public void cria() {
         db.execSQL(
-                "CREATE TABLE " + NOME_TABELA + " (" +
+                "CREATE TABLE " + NOME_TABELA_REGIAO + " (" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        CAMPO_NOME_DISTRITO_COMPLETO + " TEXT NOT NULL" +
+                        CAMPO_NOME_DISTRITO + " TEXT NOT NULL" +
                         ")"
         );
     }
@@ -37,7 +37,7 @@ public class BDTableRegiao implements BaseColumns{
      * @return the row ID of the newly inserted row, or -1 if an error occurred
      */
     public long insert(ContentValues values) {
-        return db.insert(NOME_TABELA, null, values);
+        return db.insert(NOME_TABELA_REGIAO, null, values);
     }
 
     /**
@@ -70,7 +70,7 @@ public class BDTableRegiao implements BaseColumns{
     public Cursor query(String[] columns, String selection,
                         String[] selectionArgs, String groupBy, String having,
                         String orderBy) {
-        return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy);
+        return db.query(NOME_TABELA_REGIAO, columns, selection, selectionArgs, groupBy, having, orderBy);
     }
 
     /**
@@ -86,7 +86,7 @@ public class BDTableRegiao implements BaseColumns{
      * @return the number of rows affected
      */
     public int update(ContentValues values, String whereClause, String[] whereArgs) {
-        return db.update(NOME_TABELA, values, whereClause, whereArgs);
+        return db.update(NOME_TABELA_REGIAO, values, whereClause, whereArgs);
     }
 
     /**
@@ -102,6 +102,6 @@ public class BDTableRegiao implements BaseColumns{
      *         whereClause.
      */
     public int delete(String whereClause, String[] whereArgs) {
-        return db.delete(NOME_TABELA, whereClause, whereArgs);
+        return db.delete(NOME_TABELA_REGIAO, whereClause, whereArgs);
     }
 }

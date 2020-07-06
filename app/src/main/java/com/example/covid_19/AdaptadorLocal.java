@@ -122,8 +122,8 @@ public class AdaptadorLocal extends RecyclerView.Adapter<AdaptadorLocal.ViewHold
             this.local = local;
             textViewNome.setText(local.getNome());
             textViewRua.setText(local.getRua());
-            textViewTipo.setText(local.getTipo());
-            textViewDistrito.setText(local.getDistrito());
+            textViewTipo.setText(String.valueOf(local.getId_tipo()));
+            textViewDistrito.setText(String.valueOf(local.getId_regiao()));
         }
 
         /**

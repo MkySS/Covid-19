@@ -6,24 +6,25 @@ import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 public class BDTableSintomas implements BaseColumns{
-    public static final String NOME_TABELA = "sintomas";
+    public static final String NOME_TABELA_SINTOMAS = "sintomas";
     public static final String CAMPO_NOME = "Nome";
 
-    public static final String CAMPO_ID_COMPLETO = NOME_TABELA + "." + _ID;
-    public static final String CAMPO_NOME_COMPLETO = NOME_TABELA + "." + CAMPO_NOME;
+    public static final String CAMPO_ID_COMPLETO = NOME_TABELA_SINTOMAS + "." + _ID;
+    public static final String CAMPO_NOME_COMPLETO = NOME_TABELA_SINTOMAS + "." + CAMPO_NOME;
 
-    public static final String[] TODOS_CAMPOS_SINTOMAS = {_ID, CAMPO_NOME_COMPLETO};
+    public static final String[] TODOS_CAMPOS_SINTOMAS = {CAMPO_ID_COMPLETO, CAMPO_NOME_COMPLETO};
 
     private SQLiteDatabase db;
     public BDTableSintomas(SQLiteDatabase db) {
+
         this.db = db;
     }
 
     public void cria() {
         db.execSQL(
-                "CREATE TABLE " + NOME_TABELA + " (" +
+                "CREATE TABLE " + NOME_TABELA_SINTOMAS + " (" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        CAMPO_NOME_COMPLETO + " TEXT NOT NULL" +
+                        CAMPO_NOME + " TEXT NOT NULL" +
                         ")"
         );
     }
@@ -37,7 +38,7 @@ public class BDTableSintomas implements BaseColumns{
      * @return the row ID of the newly inserted row, or -1 if an error occurred
      */
     public long insert(ContentValues values) {
-        return db.insert(NOME_TABELA, null, values);
+        return db.insert(NOME_TABELA_SINTOMAS, null, values);
     }
 
     /**
@@ -70,7 +71,7 @@ public class BDTableSintomas implements BaseColumns{
     public Cursor query(String[] columns, String selection,
                         String[] selectionArgs, String groupBy, String having,
                         String orderBy) {
-        return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy);
+        return db.query(NOME_TABELA_SINTOMAS, columns, selection, selectionArgs, groupBy, having, orderBy);
     }
 
     /**
@@ -86,7 +87,7 @@ public class BDTableSintomas implements BaseColumns{
      * @return the number of rows affected
      */
     public int update(ContentValues values, String whereClause, String[] whereArgs) {
-        return db.update(NOME_TABELA, values, whereClause, whereArgs);
+        return db.update(NOME_TABELA_SINTOMAS, values, whereClause, whereArgs);
     }
 
     /**
@@ -102,6 +103,6 @@ public class BDTableSintomas implements BaseColumns{
      *         whereClause.
      */
     public int delete(String whereClause, String[] whereArgs) {
-        return db.delete(NOME_TABELA, whereClause, whereArgs);
+        return db.delete(NOME_TABELA_SINTOMAS, whereClause, whereArgs);
     }
 }

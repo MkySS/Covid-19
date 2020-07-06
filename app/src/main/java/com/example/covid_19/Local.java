@@ -4,8 +4,6 @@ public class Local {
     private long id = -1;
     private String nome;
     private String rua;
-    private String distrito;
-    private String tipo;
     private long id_regiao = -1;
     private long id_tipo = -1;
 
@@ -31,22 +29,6 @@ public class Local {
 
     public void setRua(String rua) {
         this.rua = rua;
-    }
-
-    public String getDistrito() {
-        return distrito;
-    }
-
-    public void setDistrito(String distrito) {
-        this.distrito = distrito;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public long getId_regiao() {

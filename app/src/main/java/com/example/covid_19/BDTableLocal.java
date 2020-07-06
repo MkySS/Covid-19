@@ -6,21 +6,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 public class BDTableLocal implements BaseColumns {
-    public static final String NOME_TABELA = "Local";
+    public static final String NOME_TABELA_LOCAL = "Local";
     public static final String CAMPO_LOCAL_NOME = "Nome";
     public static final String CAMPO_NOME_RUA = "Rua";
-    public static final String CAMPO_DISTRITO = "Distrito";
-    public static final String CAMPO_TIPO = "Tipo";
     public static final String ID_REGIAO = "id_regiao";
     public static final String ID_TIPO = "id_tipo";
 
-    public static final String CAMPO_ID_COMPLETO = NOME_TABELA + "." + _ID;
-    public static final String CAMPO_LOCAL_NOME_COMPLETO = NOME_TABELA + "." + CAMPO_LOCAL_NOME;
-    public static final String CAMPO_NOME_RUA_COMPLETO = NOME_TABELA + "." + CAMPO_NOME_RUA;
-    public static final String CAMPO_DISTRITO_COMPLETO = BDTableRegiao.CAMPO_ID_COMPLETO + " AS " + CAMPO_DISTRITO;
-    public static final String CAMPO_TIPO_COMPLETO = BDTableLocal.CAMPO_ID_COMPLETO + " AS " + CAMPO_TIPO;
+    public static final String CAMPO_ID_COMPLETO = NOME_TABELA_LOCAL + "." + _ID;
+    public static final String CAMPO_LOCAL_NOME_COMPLETO = NOME_TABELA_LOCAL + "." + CAMPO_LOCAL_NOME;
+    public static final String CAMPO_NOME_RUA_COMPLETO = NOME_TABELA_LOCAL + "." + CAMPO_NOME_RUA;
+    public static final String CAMPO_DISTRITO_COMPLETO = BDTableRegiao.NOME_TABELA_REGIAO + "." + BDTableRegiao.CAMPO_NOME_DISTRITO;
+    public static final String CAMPO_TIPO_COMPLETO = BDTableTipo.NOME_TABELA_TIPO + "." + BDTableTipo.CAMPO_TIPO_NOME;
 
-    public static final String[] TODOS_CAMPOS_LOCAL = {_ID, CAMPO_LOCAL_NOME_COMPLETO, CAMPO_DISTRITO_COMPLETO, CAMPO_TIPO_COMPLETO};
+    public static final String[] TODOS_CAMPOS_LOCAL = {CAMPO_ID_COMPLETO, CAMPO_LOCAL_NOME_COMPLETO, CAMPO_NOME_RUA_COMPLETO, CAMPO_DISTRITO_COMPLETO, CAMPO_TIPO_COMPLETO};
 
     private SQLiteDatabase db;
     public BDTableLocal(SQLiteDatabase db) {
@@ -29,16 +27,16 @@ public class BDTableLocal implements BaseColumns {
 
     public void cria() {
         db.execSQL(
-                "CREATE TABLE " + NOME_TABELA + " (" +
+                "CREATE TABLE " + NOME_TABELA_LOCAL + " (" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        CAMPO_LOCAL_NOME_COMPLETO + " TEXT NOT NULL" +
-                        CAMPO_NOME_RUA_COMPLETO + " TEXT NOT NULL" +
-                        ID_REGIAO + " INTEGER NOT NULL," +
+                        CAMPO_LOCAL_NOME + " TEXT NOT NULL, " +
+                        CAMPO_NOME_RUA + " TEXT NOT NULL, " +
+                        ID_REGIAO + " INTEGER NOT NULL, " +
+                        ID_TIPO + " INTEGER NOT NULL, " +
                         "FOREIGN KEY (" + ID_REGIAO + ") REFERENCES " +
-                        BDTableRegiao.CAMPO_NOME_DISTRITO_COMPLETO + "(" + BDTableRegiao._ID +
-                        ID_TIPO + " INTEGER NOT NULL," +
+                        BDTableRegiao.NOME_TABELA_REGIAO + "(" + BDTableRegiao._ID + ")," +
                         "FOREIGN KEY (" + ID_TIPO + ") REFERENCES " +
-                        BDTableTipo.CAMPO_TIPO_NOME_COMPLETO + "(" + BDTableTipo._ID +
+                        BDTableTipo.NOME_TABELA_TIPO + "(" + BDTableTipo._ID + ")" +
                         ")"
         );
     }
@@ -52,7 +50,7 @@ public class BDTableLocal implements BaseColumns {
      * @return the row ID of the newly inserted row, or -1 if an error occurred
      */
     public long insert(ContentValues values) {
-        return db.insert(NOME_TABELA, null, values);
+        return db.insert(NOME_TABELA_LOCAL, null, values);
     }
 
     /**
@@ -85,7 +83,7 @@ public class BDTableLocal implements BaseColumns {
     public Cursor query(String[] columns, String selection,
                         String[] selectionArgs, String groupBy, String having,
                         String orderBy) {
-        return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy);
+        return db.query(NOME_TABELA_LOCAL, columns, selection, selectionArgs, groupBy, having, orderBy);
     }
 
     /**
@@ -101,7 +99,7 @@ public class BDTableLocal implements BaseColumns {
      * @return the number of rows affected
      */
     public int update(ContentValues values, String whereClause, String[] whereArgs) {
-        return db.update(NOME_TABELA, values, whereClause, whereArgs);
+        return db.update(NOME_TABELA_LOCAL, values, whereClause, whereArgs);
     }
 
     /**
@@ -117,6 +115,6 @@ public class BDTableLocal implements BaseColumns {
      *         whereClause.
      */
     public int delete(String whereClause, String[] whereArgs) {
-        return db.delete(NOME_TABELA, whereClause, whereArgs);
+        return db.delete(NOME_TABELA_LOCAL, whereClause, whereArgs);
     }
 }

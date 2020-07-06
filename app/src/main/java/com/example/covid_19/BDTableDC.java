@@ -6,11 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 public class BDTableDC implements BaseColumns{
-    public static final String NOME_TABELA = "DC";
+    public static final String NOME_TABELA_DC = "DC";
     public static final String CAMPO_NOME_DC = "Nome";
 
-    public static final String CAMPO_NOME_DC_COMPLETO = NOME_TABELA + "." + _ID;
-    public static final String[] TODOS_CAMPOS_DC = {_ID, CAMPO_NOME_DC_COMPLETO};
+    public static final String CAMPO_ID_COMPLETO = NOME_TABELA_DC + "." + _ID;
+    public static final String CAMPO_NOME_DC_COMPLETO = NOME_TABELA_DC + "." + CAMPO_NOME_DC;
+
+    public static final String[] TODOS_CAMPOS_DC = {CAMPO_ID_COMPLETO, CAMPO_NOME_DC_COMPLETO};
 
     private SQLiteDatabase db;
 
@@ -20,9 +22,9 @@ public class BDTableDC implements BaseColumns{
 
     public void cria() {
         db.execSQL(
-                "CREATE TABLE " + NOME_TABELA + " (" +
+                "CREATE TABLE " + NOME_TABELA_DC + " (" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        CAMPO_NOME_DC_COMPLETO + " TEXT NOT NULL" +
+                        CAMPO_NOME_DC + " TEXT NOT NULL" +
                         ")"
         );
     }
@@ -36,7 +38,7 @@ public class BDTableDC implements BaseColumns{
      * @return the row ID of the newly inserted row, or -1 if an error occurred
      */
     public long insert(ContentValues values) {
-        return db.insert(NOME_TABELA, null, values);
+        return db.insert(NOME_TABELA_DC, null, values);
     }
 
     /**
@@ -69,7 +71,7 @@ public class BDTableDC implements BaseColumns{
     public Cursor query(String[] columns, String selection,
                         String[] selectionArgs, String groupBy, String having,
                         String orderBy) {
-        return db.query(NOME_TABELA, columns, selection, selectionArgs, groupBy, having, orderBy);
+        return db.query(NOME_TABELA_DC, columns, selection, selectionArgs, groupBy, having, orderBy);
     }
 
     /**
@@ -85,7 +87,7 @@ public class BDTableDC implements BaseColumns{
      * @return the number of rows affected
      */
     public int update(ContentValues values, String whereClause, String[] whereArgs) {
-        return db.update(NOME_TABELA, values, whereClause, whereArgs);
+        return db.update(NOME_TABELA_DC, values, whereClause, whereArgs);
     }
 
     /**
@@ -101,6 +103,6 @@ public class BDTableDC implements BaseColumns{
      *         whereClause.
      */
     public int delete(String whereClause, String[] whereArgs) {
-        return db.delete(NOME_TABELA, whereClause, whereArgs);
+        return db.delete(NOME_TABELA_DC, whereClause, whereArgs);
     }
 }

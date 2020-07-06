@@ -38,8 +38,8 @@ public class Converte {
         local.setId(cursor.getInt(cursor.getColumnIndex(BDTableLocal._ID)));
         local.setNome(cursor.getString(cursor.getColumnIndex(BDTableLocal.CAMPO_LOCAL_NOME)));
         local.setRua(cursor.getString(cursor.getColumnIndex(BDTableLocal.CAMPO_NOME_RUA)));
-        local.setTipo(cursor.getString(cursor.getColumnIndex(BDTableLocal.CAMPO_TIPO)));
-        local.setDistrito(cursor.getString(cursor.getColumnIndex(BDTableLocal.CAMPO_DISTRITO)));
+        local.setId_regiao(cursor.getInt(cursor.getColumnIndex(BDTableLocal.ID_REGIAO)));
+        local.setId_tipo(cursor.getInt(cursor.getColumnIndex(BDTableLocal.ID_TIPO)));
         return local;
     }
 }
