@@ -50,6 +50,7 @@ public class AdaptadorLocal extends RecyclerView.Adapter<AdaptadorLocal.ViewHold
     @Override
     public ViewHolderLocal onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemLocal = LayoutInflater.from(context).inflate(R.layout.item_local, parent, false);
+
         return new ViewHolderLocal(itemLocal);
     }
 

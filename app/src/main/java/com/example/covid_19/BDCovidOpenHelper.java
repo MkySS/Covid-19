@@ -63,43 +63,24 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
     }
 
     private void seedData(SQLiteDatabase db){
-        /*BDTableSintomas tabelaSintomas = new BDTableSintomas(db);
+        BDTableLocal tabelaLocal = new BDTableLocal(db);
+        BDTableRegiao tabelaRegiao = new BDTableRegiao(db);
+        BDTableTipo tabelaTipo = new BDTableTipo(db);
 
-        Sintoma sintoma = new Sintoma();
-        sintoma.setNome(context.getString(R.string.s1));
-        long idSinS1 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+        Regiao Distrito = new Regiao();
+        Distrito.setDistrito("Aveiro");
+        long idDist1 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
 
-        sintoma = new Sintoma();
-        sintoma.setNome(context.getString(R.string.s2));
-        long idSinS2 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
+        Tipo tipo = new Tipo();
+        tipo.setTipo("Hospital");
+        long idTip1 = tabelaTipo.insert(Converte.TipoToConverteValues(tipo));
 
-        sintoma = new Sintoma();
-        sintoma.setNome(context.getString(R.string.s3));
-        long idSinS3 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
-
-        sintoma = new Sintoma();
-        sintoma.setNome(context.getString(R.string.s4));
-        long idSinS4 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
-
-        sintoma = new Sintoma();
-        sintoma.setNome(context.getString(R.string.s5));
-        long idSinS5 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
-
-        sintoma = new Sintoma();
-        sintoma.setNome(context.getString(R.string.s6));
-        long idSinS6 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
-
-        sintoma = new Sintoma();
-        sintoma.setNome(context.getString(R.string.s7));
-        long idSinS7 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
-
-        sintoma = new Sintoma();
-        sintoma.setNome(context.getString(R.string.s8));
-        long idSinS8 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
-
-        sintoma = new Sintoma();
-        sintoma.setNome(context.getString(R.string.s9));
-        long idSinS9 = tabelaSintomas.insert(Converte.SintomaaToConverteValues(sintoma));*/
+        Local local = new Local();
+        local.setNome("Hospital de S.joão");
+        local.setRua("Alameda Prof.Hernâni Monteiro");
+        local.setId_regiao(idDist1);
+        local.setId_tipo(idTip1);
+        tabelaLocal.insert(Converte.localToContentValues(local));
 
     }
     public void PreencheTabelaSintomas(BDTableSintomas tabelaSintomas){

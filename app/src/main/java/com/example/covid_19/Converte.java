@@ -43,6 +43,17 @@ public class Converte {
 
         return valores;
     }
+    public static Local contentValuesToLocal(ContentValues valores){
+        Local local = new Local();
+
+        local.setId(valores.getAsLong(BDTableLocal._ID));
+        local.setNome(valores.getAsString(BDTableLocal.CAMPO_LOCAL_NOME));
+        local.setRua(valores.getAsString(BDTableLocal.CAMPO_NOME_RUA));
+        local.setId_tipo(valores.getAsInteger(BDTableLocal.ID_TIPO));
+        local.setId_regiao(valores.getAsInteger(BDTableLocal.ID_REGIAO));
+
+        return local;
+    }
 
     public static Local cursorToLocal(Cursor cursor) {
         Local local = new Local();

@@ -4,27 +4,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.ContentProvider;
-import androidx.loader.content.CursorLoader;
+import androidx.loader.app.LoaderManager;
+
 import android.content.Context;
+import androidx.loader.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CursorAdapter;
 
 public class LocalView extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
-    public static final String ID_NOTICIA = "ID_NOTICIA";
+    public static final String ID_LOCAL = "ID_LOCAL";
     public static final int ID_CURSOR_LOADER_LOCAL = 0;
     private AdaptadorLocal adaptadorlocal;
     private RecyclerView recyclerViewLocal;
-    private Loader<Cursor> loader;
-    private Cursor data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +41,6 @@ public class LocalView extends AppCompatActivity implements LoaderManager.Loader
         LoaderManager.getInstance(this).initLoader(ID_CURSOR_LOADER_LOCAL, null, this);
     }
 
-    /*public void CriarLocal(View view){
-        Intent intentInsert = new Intent(this, DisplayInsertLocal.class);
-        startActivity(intentInsert);
-
-
-    }*/
     @Override
     protected void onResume() {
         getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_LOCAL, null, this);
@@ -124,7 +117,5 @@ public class LocalView extends AppCompatActivity implements LoaderManager.Loader
      * @param loader The Loader that is being reset.
      */
     @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        adaptadorlocal.setCursor(null);
-    }
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) { adaptadorlocal.setCursor(null); }
 }
