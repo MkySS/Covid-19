@@ -14,8 +14,8 @@ import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class CntentProveider extends android.content.ContentProvider{
-    private static final String AUTHORITY = "com.example.Covid192";
+public class ContentProveiderLocal extends android.content.ContentProvider{
+    private static final String AUTHORITY = "com.example.covid_19";
     private static final String LOCAL = "local";
     private static final String REGIAO = "Regiao";
     private static final String TIPO = "Tipo";

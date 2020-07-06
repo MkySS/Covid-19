@@ -12,7 +12,7 @@ public class BDTableRegiao implements BaseColumns{
     public static final String CAMPO_ID_COMPLETO = NOME_TABELA + "." + _ID;
     public static final String CAMPO_NOME_DISTRITO_COMPLETO = NOME_TABELA + "." + CAMPO_NOME_DISTRITO;
 
-    public static final String[] TODOS_CAMPOS_SINTOMAS = {_ID, CAMPO_NOME_DISTRITO_COMPLETO};
+    public static final String[] TODOS_CAMPOS_REGIAO = {_ID, CAMPO_NOME_DISTRITO_COMPLETO};
 
     private SQLiteDatabase db;
     public BDTableRegiao(SQLiteDatabase db) {

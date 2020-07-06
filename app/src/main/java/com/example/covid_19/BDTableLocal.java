@@ -20,7 +20,7 @@ public class BDTableLocal implements BaseColumns {
     public static final String CAMPO_DISTRITO_COMPLETO = BDTableRegiao.CAMPO_ID_COMPLETO + " AS " + CAMPO_DISTRITO;
     public static final String CAMPO_TIPO_COMPLETO = BDTableLocal.CAMPO_ID_COMPLETO + " AS " + CAMPO_TIPO;
 
-    public static final String[] TODOS_CAMPOS_SINTOMAS = {_ID, CAMPO_LOCAL_NOME_COMPLETO, CAMPO_DISTRITO_COMPLETO, CAMPO_TIPO_COMPLETO};
+    public static final String[] TODOS_CAMPOS_LOCAL = {_ID, CAMPO_LOCAL_NOME_COMPLETO, CAMPO_DISTRITO_COMPLETO, CAMPO_TIPO_COMPLETO};
 
     private SQLiteDatabase db;
     public BDTableLocal(SQLiteDatabase db) {

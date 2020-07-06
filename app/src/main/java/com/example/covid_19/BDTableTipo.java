@@ -13,7 +13,7 @@ public class BDTableTipo implements BaseColumns {
     public static final String CAMPO_ID_COMPLETO = NOME_TABELA + "." + _ID;
     public static final String CAMPO_TIPO_NOME_COMPLETO = NOME_TABELA + "." + CAMPO_TIPO_NOME;
 
-    public static final String[] TODOS_CAMPOS_SINTOMAS = {_ID, CAMPO_TIPO_NOME_COMPLETO};
+    public static final String[] TODOS_CAMPOS_TIPO = {_ID, CAMPO_TIPO_NOME_COMPLETO};
 
     private SQLiteDatabase db;
     public BDTableTipo(SQLiteDatabase db) {

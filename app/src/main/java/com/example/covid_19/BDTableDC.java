@@ -10,7 +10,7 @@ public class BDTableDC implements BaseColumns{
     public static final String CAMPO_NOME_DC = "Nome";
 
     public static final String CAMPO_NOME_DC_COMPLETO = NOME_TABELA + "." + _ID;
-    public static final String[] TODOS_CAMPOS = {_ID, CAMPO_NOME_DC_COMPLETO};
+    public static final String[] TODOS_CAMPOS_DC = {_ID, CAMPO_NOME_DC_COMPLETO};
 
     private SQLiteDatabase db;
 
