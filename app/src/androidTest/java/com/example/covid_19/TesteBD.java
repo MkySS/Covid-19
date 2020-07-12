@@ -314,7 +314,7 @@ public class TesteBD {
         BDCovidOpenHelper openHelper = new BDCovidOpenHelper(appContext);
         SQLiteDatabase bd = openHelper.getWritableDatabase();
 
-        insereLocal(bd, "Hospital de S.João", "Alameda Prof. Hernâni Monteiro", "Porto", "Hospital");
+        insereLocal(bd, "Hospital de S.Joao", "Alameda Prof. Hernâni Monteiro", "Porto", "Hospital");
 
         bd.close();
     }
@@ -359,7 +359,7 @@ public class TesteBD {
         Local local = Converte.cursorToLocal(cursor);
         cursor.close();
 
-        assertEquals("Hospital", local.getNome());
+        assertEquals("TESTE", local.getNome());
 
         local.setNome("Hospital Santo Antonio");
         int registosAfetados = tabelaLocal.update(Converte.localToContentValues(local), BDTableLocal.CAMPO_ID_COMPLETO + "=?", new String[]{String.valueOf(local.getId())});

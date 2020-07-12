@@ -25,19 +25,12 @@ public class Converte {
 
         return valores;
     }
-    public static ContentValues TipoToConverteValues(Tipo tipo){
-        ContentValues valores = new ContentValues();
-
-        valores.put(BDTableTipo.CAMPO_TIPO_NOME, tipo.getTipo());
-
-        return valores;
-    }
 
     public static ContentValues localToContentValues(Local local){
         ContentValues valores = new ContentValues();
 
         valores.put(BDTableLocal.ID_REGIAO, local.getId_regiao());
-        valores.put(BDTableLocal.ID_TIPO, local.getId_tipo());
+        valores.put(BDTableLocal.CAMPO_LOCAL_TIPO, local.getTipo());
         valores.put(BDTableLocal.CAMPO_LOCAL_NOME, local.getNome());
         valores.put(BDTableLocal.CAMPO_NOME_RUA, local.getRua());
 
@@ -49,7 +42,7 @@ public class Converte {
         local.setId(valores.getAsLong(BDTableLocal._ID));
         local.setNome(valores.getAsString(BDTableLocal.CAMPO_LOCAL_NOME));
         local.setRua(valores.getAsString(BDTableLocal.CAMPO_NOME_RUA));
-        local.setId_tipo(valores.getAsInteger(BDTableLocal.ID_TIPO));
+        local.setTipo(valores.getAsString(BDTableLocal.CAMPO_LOCAL_TIPO));
         local.setId_regiao(valores.getAsInteger(BDTableLocal.ID_REGIAO));
 
         return local;
@@ -61,7 +54,7 @@ public class Converte {
         local.setNome(cursor.getString(cursor.getColumnIndex(BDTableLocal.CAMPO_LOCAL_NOME)));
         local.setRua(cursor.getString(cursor.getColumnIndex(BDTableLocal.CAMPO_NOME_RUA)));
         local.setId_regiao(cursor.getInt(cursor.getColumnIndex(BDTableLocal.ID_REGIAO)));
-        local.setId_tipo(cursor.getInt(cursor.getColumnIndex(BDTableLocal.ID_TIPO)));
+        local.setTipo(cursor.getString(cursor.getColumnIndex(BDTableLocal.CAMPO_LOCAL_TIPO)));
         return local;
     }
 }

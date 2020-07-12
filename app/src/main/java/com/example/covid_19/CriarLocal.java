@@ -3,30 +3,27 @@ package com.example.covid_19;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
 
 import android.content.Context;
-import android.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
+import androidx.loader.content.CursorLoader;
 
-import java.util.ArrayList;
+import androidx.fragment.app.FragmentManager;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 public class CriarLocal extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private Spinner spinnerDistrito;
-    public Spinner Distrito = spinnerDistrito;
-    public Spinner Tipo = spinnerDistrito;
 
     public static final int ID_CURSOR_LOADER_DISTRITO = 0;
 
@@ -73,11 +70,21 @@ public class CriarLocal extends AppCompatActivity implements LoaderManager.Loade
             return;
         }
 
+        TextInputEditText TextInputEditTextTipo = (TextInputEditText) findViewById(R.id.TextInputEditTextTipo);
+        String tipo = TextInputEditTextTipo.getText().toString();
+
+        if(tipo.length() < 1){
+            TextInputEditTextNome.setError(getString(R.string.C_Obrigatorio));
+            TextInputEditTextNome.requestFocus();
+            return;
+        }
+
         long idRegiao = spinnerDistrito.getSelectedItemId();
 
         Local local = new Local();
         local.setNome(nome);
         local.setRua(rua);
+        local.setTipo(tipo);
         local.setId_regiao(idRegiao);
 
         try{
@@ -106,7 +113,7 @@ public class CriarLocal extends AppCompatActivity implements LoaderManager.Loade
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        return new androidx.loader.content.CursorLoader(this, ContentProveiderLocal.ENDERECO_REGIAO, BDTableRegiao.TODOS_CAMPOS_REGIAO,null,null,null);
+        return new CursorLoader(this, ContentProveiderLocal.ENDERECO_REGIAO, BDTableRegiao.TODOS_CAMPOS_REGIAO,null,null,null);
 
     }
 

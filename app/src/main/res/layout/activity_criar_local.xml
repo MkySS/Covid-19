@@ -86,20 +86,13 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1">
 
-                            <TextView
-                                android:id="@+id/textView19"
-                                android:layout_width="match_parent"
-                                android:layout_height="0.1dp"
-                                android:layout_weight="1"
-                                android:hint="@string/TipoU"
-                                android:textSize="18sp" />
-
-                            <Spinner
-                                android:id="@+id/spinnerTipo"
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/TextInputEditTextTipo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1" />
+                                android:hint="@string/TipoU" />
                         </com.google.android.material.textfield.TextInputLayout>
+
                     </com.google.android.material.textfield.TextInputLayout>
                 </com.google.android.material.textfield.TextInputLayout>
             </com.google.android.material.textfield.TextInputLayout>
