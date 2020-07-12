@@ -41,4 +41,7 @@
     <string name="Street">Rua:</string>
     <string name="TipoU">Tipo de Unidade:</string>
     <string name="DistritoA">Distrito:</string>
+    <string name="CLocal">Inserir Local</string>
+    <string name="Nome_">Nome:</string>
+    <string name="C_Obrigatorio">Required field!</string>
 </resources>

@@ -205,89 +205,7 @@ public class TesteBD {
 
         bd.close();
     }
-    private long insereTipo(BDTableTipo tableTipo, Tipo tipo){
-        long id = tableTipo.insert(Converte.TipoToConverteValues(tipo));
-        assertNotEquals(-1, id);
 
-        return id;
-    }
-
-    private long insereTipo(BDTableTipo tabelaTipo, String nome_tipo){
-        Tipo tipo = new Tipo();
-        tipo.setTipo(nome_tipo);
-
-        return insereTipo(tabelaTipo, tipo);
-    }
-    @Test
-    public void consegueInserirTipo(){
-        Context appContext = getTargetContext();
-
-        BDCovidOpenHelper openHelper = new BDCovidOpenHelper(appContext);
-        SQLiteDatabase bd = openHelper.getWritableDatabase();
-
-        BDTableTipo tabelaTipo = new BDTableTipo(bd);
-
-        insereTipo(tabelaTipo, "Hospital");
-
-        bd.close();
-    }
-    @Test
-    public void conseguirLerTipo(){
-        Context appContext = getTargetContext();
-        BDCovidOpenHelper openHelper = new BDCovidOpenHelper(appContext);
-        SQLiteDatabase db = openHelper.getWritableDatabase();
-
-        BDTableTipo tabelaTipo = new BDTableTipo(db);
-
-        Cursor cursor = tabelaTipo.query(BDTableTipo.TODOS_CAMPOS_TIPO, null,null,null,null, null);
-        int registos = cursor.getCount();
-        cursor.close();
-
-        insereTipo(tabelaTipo, "Centro de Saude");
-
-        cursor = tabelaTipo.query(BDTableTipo.TODOS_CAMPOS_TIPO, null,null,null,null,null);
-        assertEquals(registos + 1, cursor.getCount());
-        cursor.close();
-
-        db.close();
-    }
-    @Test
-    public void consegueAlterarTipo(){
-        Context appContext = getTargetContext();
-
-        BDCovidOpenHelper openHelper = new BDCovidOpenHelper(appContext);
-        SQLiteDatabase bd = openHelper.getWritableDatabase();
-
-        BDTableTipo tabelaTipo = new BDTableTipo(bd);
-
-        Tipo tipo = new Tipo();
-        tipo.setTipo("Teste");
-
-        long id = insereTipo(tabelaTipo, tipo);
-
-        tipo.setTipo("Fármacia");
-        int registosAfetados = tabelaTipo.update(Converte.TipoToConverteValues(tipo), BDTableTipo._ID + "=?", new String[]{String.valueOf(id)});
-        assertEquals(1, registosAfetados);
-
-        bd.close();
-    }
-
-    @Test
-    public void consegueEliminarTipo(){
-        Context appContext = getTargetContext();
-
-        BDCovidOpenHelper openHelper = new BDCovidOpenHelper(appContext);
-        SQLiteDatabase bd = openHelper.getWritableDatabase();
-
-        BDTableTipo tabelaTipo = new BDTableTipo(bd);
-
-        long id = insereTipo(tabelaTipo, "Teste");
-
-        int registosEliminados = tabelaTipo.delete(BDTableTipo._ID + "=?", new String[]{String.valueOf(id)});
-        assertEquals(1, registosEliminados);
-
-        bd.close();
-    }
     private long insereSintoma(BDTableSintomas tableSintomas, Sintoma sintoma){
         long id = tableSintomas.insert(Converte.SintomaaToConverteValues(sintoma));
         assertNotEquals(-1, id);
@@ -366,23 +284,21 @@ public class TesteBD {
 
         long id = insereSintoma(tabelaSintoma, "Teste");
 
-        int registosEliminados = tabelaSintoma.delete(BDTableTipo._ID + "=?", new String[]{String.valueOf(id)});
+        int registosEliminados = tabelaSintoma.delete(BDTableSintomas._ID + "=?", new String[]{String.valueOf(id)});
         assertEquals(1, registosEliminados);
 
         bd.close();
     }
     private long insereLocal(SQLiteDatabase bd, String nome_local, String rua, String Nome_Regiao, String Nome_tipo){
         BDTableRegiao tabelaRegiao = new BDTableRegiao(bd);
-        BDTableTipo tabelaTipo = new BDTableTipo(bd);
 
         long idRegiao = insereRegiao(tabelaRegiao, Nome_Regiao);
-        long idTipo = insereTipo(tabelaTipo, Nome_tipo);
 
         Local local = new Local();
         local.setNome(nome_local);
         local.setRua(rua);
         local.setId_regiao(idRegiao);
-        local.setId_tipo(idTipo);
+        local.setTipo(Nome_tipo);
 
         BDTableLocal tabelaLocal = new BDTableLocal(bd);
         long id = tabelaLocal.insert(Converte.localToContentValues(local));

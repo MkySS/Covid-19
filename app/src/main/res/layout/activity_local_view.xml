@@ -40,7 +40,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:hint="@string/Insert" />
+                android:hint="@string/Insert"
+                android:onClick="CriarLocal" />
 
             <Button
                 android:id="@+id/buttonEdit"

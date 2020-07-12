@@ -43,8 +43,6 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
         BDTableRegiao tabelaRegiao = new BDTableRegiao(db);
         tabelaRegiao.cria();
 
-        BDTableTipo tabelaTipo = new BDTableTipo(db);
-        tabelaTipo.cria();
 
         BDTableLocal tabelaLocal = new BDTableLocal(db);
         tabelaLocal.cria();
@@ -55,7 +53,6 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
 
         PreencheTabelaRegiao(tabelaRegiao);
 
-        PrencheTabelaTipo(tabelaTipo);
 
         if(DESENVOLVIMENTO){
             seedData(db);
@@ -65,21 +62,17 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
     private void seedData(SQLiteDatabase db){
         BDTableLocal tabelaLocal = new BDTableLocal(db);
         BDTableRegiao tabelaRegiao = new BDTableRegiao(db);
-        BDTableTipo tabelaTipo = new BDTableTipo(db);
 
         Regiao Distrito = new Regiao();
         Distrito.setDistrito("Aveiro");
         long idDist1 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
 
-        Tipo tipo = new Tipo();
-        tipo.setTipo("Hospital");
-        long idTip1 = tabelaTipo.insert(Converte.TipoToConverteValues(tipo));
 
         Local local = new Local();
         local.setNome("Hospital de S.joão");
         local.setRua("Alameda Prof.Hernâni Monteiro");
         local.setId_regiao(idDist1);
-        local.setId_tipo(idTip1);
+        local.setTipo("Hospital");
         tabelaLocal.insert(Converte.localToContentValues(local));
 
     }
@@ -221,24 +214,6 @@ public class BDCovidOpenHelper extends SQLiteOpenHelper {
         long idDist18 = tabelaRegiao.insert(Converte.DistritoToConverteValues(Distrito));
     }
 
-    private void PrencheTabelaTipo(BDTableTipo tabelaTipo){
-
-        Tipo tipo = new Tipo();
-        tipo.setTipo("Hospital");
-        long idTip1 = tabelaTipo.insert(Converte.TipoToConverteValues(tipo));
-
-        tipo = new Tipo();
-        tipo.setTipo("Centro de Saude");
-        long idTip2 = tabelaTipo.insert(Converte.TipoToConverteValues(tipo));
-
-        tipo = new Tipo();
-        tipo.setTipo("Fármacia");
-        long idTip3 = tabelaTipo.insert(Converte.TipoToConverteValues(tipo));
-
-        tipo = new Tipo();
-        tipo.setTipo("Centro de Rastreio Móvel");
-        long idTip4 = tabelaTipo.insert(Converte.TipoToConverteValues(tipo));
-    }
 
     /**
      * Called when the database needs to be upgraded. The implementation

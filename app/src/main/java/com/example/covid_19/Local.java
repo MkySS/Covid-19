@@ -4,8 +4,9 @@ public class Local {
     private long id = -1;
     private String nome;
     private String rua;
+    private String tipo;
     private long id_regiao = -1;
-    private long id_tipo = -1;
+
 
     public long getId() {
         return id;
@@ -39,11 +40,11 @@ public class Local {
         this.id_regiao = id_regiao;
     }
 
-    public long getId_tipo() {
-        return id_tipo;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setId_tipo(long id_tipo) {
-        this.id_tipo = id_tipo;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

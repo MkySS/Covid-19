@@ -4,52 +4,96 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.loader.content.Loader;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
 
 import android.content.Context;
-import androidx.loader.content.CursorLoader;
+import android.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-public class LocalView extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
+import com.google.android.material.textfield.TextInputEditText;
 
-    public static final String ID_LOCAL = "ID_LOCAL";
-    public static final int ID_CURSOR_LOADER_LOCAL = 0;
-    private AdaptadorLocal adaptadorlocal;
-    private RecyclerView recyclerViewLocal;
+import java.util.ArrayList;
+
+public class CriarLocal extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+    private Spinner spinnerDistrito;
+    public Spinner Distrito = spinnerDistrito;
+    public Spinner Tipo = spinnerDistrito;
+
+    public static final int ID_CURSOR_LOADER_DISTRITO = 0;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_local_view);
+        setContentView(R.layout.activity_criar_local);
 
-        Intent intentLV = getIntent();
+        spinnerDistrito = (Spinner) findViewById(R.id.spinnerDistrito);
 
-        recyclerViewLocal = (RecyclerView) findViewById(R.id.RecyclerViewLocal);
-        adaptadorlocal = new AdaptadorLocal(this);
-        recyclerViewLocal.setAdapter(adaptadorlocal);
-        recyclerViewLocal.setLayoutManager(new LinearLayoutManager(this));
-        adaptadorlocal.setCursor(null);
+       mostrarDadosSpinnerDistrito(null);
 
-        LoaderManager.getInstance(this).initLoader(ID_CURSOR_LOADER_LOCAL, null, this);
+        LoaderManager.getInstance(this).initLoader(ID_CURSOR_LOADER_DISTRITO, null, this);
     }
-    public void CriarLocal(View view){
-        Intent intentcriarLocal = new Intent(this, CriarLocal.class);
-        startActivity(intentcriarLocal);
+    Intent intentcriarLocal = getIntent();
+
+    private void mostrarDadosSpinnerDistrito(Cursor data){
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(
+                this,
+                android.R.layout.simple_spinner_item,
+                data,
+                new String[]{BDTableRegiao.CAMPO_NOME_DISTRITO},
+                new int[]{android.R.id.text1}
+        );
+        spinnerDistrito.setAdapter(adapter);
     }
 
-    @Override
-    protected void onResume() {
-        getSupportLoaderManager().restartLoader(ID_CURSOR_LOADER_LOCAL, null, this);
-        super.onResume();
+    public void NewLocal(View view){
+        TextInputEditText TextInputEditTextNome = (TextInputEditText) findViewById(R.id.TextInputEditTextNome);
+        String nome = TextInputEditTextNome.getText().toString();
+
+        if(nome.length() < 1){
+            TextInputEditTextNome.setError(getString(R.string.C_Obrigatorio));
+            TextInputEditTextNome.requestFocus();
+            return;
+        }
+
+        TextInputEditText TextInputEditTextRua = (TextInputEditText) findViewById(R.id.TextInputEditTextRua);
+        String rua = TextInputEditTextRua.getText().toString();
+
+        if(rua.length() < 1){
+            TextInputEditTextRua.setError(getString(R.string.C_Obrigatorio));
+            TextInputEditTextRua.requestFocus();
+            return;
+        }
+
+        long idRegiao = spinnerDistrito.getSelectedItemId();
+
+        Local local = new Local();
+        local.setNome(nome);
+        local.setRua(rua);
+        local.setId_regiao(idRegiao);
+
+        try{
+            this.getContentResolver().insert(ContentProveiderLocal.ENDERECO_LOCAL, Converte.localToContentValues(local));
+            Toast.makeText(this, "Noticia Inserida", Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            Toast.makeText(this, "Erro de Inserção", Toast.LENGTH_SHORT).show();
+        }
+
+        Intent intentLV = new Intent(this, LocalView.class);
+        startActivity(intentLV);
     }
+
+
+
+
     /**
      * Instantiate and return a new Loader for the given ID.
      *
@@ -62,7 +106,8 @@ public class LocalView extends AppCompatActivity implements LoaderManager.Loader
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        return new CursorLoader(this, ContentProveiderLocal.ENDERECO_LOCAL, BDTableLocal.TODOS_CAMPOS_LOCAL, null, null, BDTableLocal.CAMPO_LOCAL_NOME);
+        return new androidx.loader.content.CursorLoader(this, ContentProveiderLocal.ENDERECO_REGIAO, BDTableRegiao.TODOS_CAMPOS_REGIAO,null,null,null);
+
     }
 
     /**
@@ -108,7 +153,7 @@ public class LocalView extends AppCompatActivity implements LoaderManager.Loader
      */
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
-        adaptadorlocal.setCursor(data);
+        mostrarDadosSpinnerDistrito(data);
     }
 
     /**
@@ -121,5 +166,7 @@ public class LocalView extends AppCompatActivity implements LoaderManager.Loader
      * @param loader The Loader that is being reset.
      */
     @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> loader) { adaptadorlocal.setCursor(null); }
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
+        mostrarDadosSpinnerDistrito(null);
+    }
 }
