@@ -89,7 +89,7 @@ public class CriarLocal extends AppCompatActivity implements LoaderManager.Loade
 
         try{
             this.getContentResolver().insert(ContentProviderLocal.ENDERECO_LOCAL, Converte.localToContentValues(local));
-            Toast.makeText(this, "Noticia Inserida", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Local Inserido", Toast.LENGTH_SHORT).show();
         }catch (Exception e){
             Toast.makeText(this, "Erro de Inserção", Toast.LENGTH_SHORT).show();
         }
