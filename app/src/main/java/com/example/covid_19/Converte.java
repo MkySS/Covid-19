@@ -7,21 +7,21 @@ public class Converte {
     public static ContentValues SintomaaToConverteValues(Sintoma sintoma){
         ContentValues valores = new ContentValues();
 
-        valores.put(BDTableSintomas.CAMPO_NOME, sintoma.getNome());
+        valores.put(BDTableSintomas.CAMPO_SINTOMAS, sintoma.getNome());
 
         return valores;
     }
     public static ContentValues DCToConverteValues(Doenca_Cronica DC){
         ContentValues valores = new ContentValues();
 
-        valores.put(BDTableDC.CAMPO_NOME_DC, DC.getNome());
+        valores.put(BDTableDC.CAMPO_DOENCA_CRONICA, DC.getNome());
 
         return valores;
     }
     public static ContentValues DistritoToConverteValues(Regiao Distrito){
         ContentValues valores = new ContentValues();
 
-        valores.put(BDTableRegiao.CAMPO_NOME_DISTRITO, Distrito.getDistrito());
+        valores.put(BDTableRegiao.CAMPO_DISTRITO, Distrito.getDistrito());
 
         return valores;
     }

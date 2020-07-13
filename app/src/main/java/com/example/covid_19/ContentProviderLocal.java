@@ -11,18 +11,16 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class ContentProveiderLocal extends android.content.ContentProvider{
+public class ContentProviderLocal extends android.content.ContentProvider{
     private static final String AUTHORITY = "com.example.covid_19";
     private static final String LOCAL = "local";
     private static final String REGIAO = "Regiao";
-    private static final String TIPO = "Tipo";
     private static final String SINTOMAS = "sintomas";
     private static final String DOENCA_CRONICA = "DC";
 
     private static final Uri ENDERECO_BASE = Uri.parse("content://" + AUTHORITY);
     public static final Uri ENDERECO_LOCAL = Uri.withAppendedPath(ENDERECO_BASE, LOCAL);
     public static final Uri ENDERECO_REGIAO = Uri.withAppendedPath(ENDERECO_BASE, REGIAO);
-    public static final Uri ENDERECO_TIPO = Uri.withAppendedPath(ENDERECO_BASE, TIPO);
     public static final Uri ENDERECO_SINTOMAS = Uri.withAppendedPath(ENDERECO_BASE, SINTOMAS);
     public static final Uri ENDERECO_DOENCA_CRONICA = Uri.withAppendedPath(ENDERECO_BASE, DOENCA_CRONICA);
 

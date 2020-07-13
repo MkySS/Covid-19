@@ -7,12 +7,12 @@ import android.provider.BaseColumns;
 
 public class BDTableRegiao implements BaseColumns{
     public static final String NOME_TABELA_REGIAO = "Regiao";
-    public static final String CAMPO_NOME_DISTRITO = "Nome";
+    public static final String CAMPO_DISTRITO = "Distrito";
 
     public static final String CAMPO_ID_COMPLETO = NOME_TABELA_REGIAO + "." + _ID;
-    public static final String CAMPO_NOME_DISTRITO_COMPLETO = NOME_TABELA_REGIAO + "." + CAMPO_NOME_DISTRITO;
+    public static final String CAMPO_COMPLETO_DISTRITO = NOME_TABELA_REGIAO + "." + CAMPO_DISTRITO;
 
-    public static final String[] TODOS_CAMPOS_REGIAO = {CAMPO_ID_COMPLETO, CAMPO_NOME_DISTRITO_COMPLETO};
+    public static final String[] TODOS_CAMPOS_REGIAO = {CAMPO_ID_COMPLETO, CAMPO_COMPLETO_DISTRITO};
 
     private SQLiteDatabase db;
     public BDTableRegiao(SQLiteDatabase db) {
@@ -23,7 +23,7 @@ public class BDTableRegiao implements BaseColumns{
         db.execSQL(
                 "CREATE TABLE " + NOME_TABELA_REGIAO + " (" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        CAMPO_NOME_DISTRITO + " TEXT NOT NULL" +
+                        CAMPO_DISTRITO + " TEXT NOT NULL" +
                         ")"
         );
     }

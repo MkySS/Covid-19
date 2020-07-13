@@ -62,7 +62,7 @@ public class LocalView extends AppCompatActivity implements LoaderManager.Loader
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        return new CursorLoader(this, ContentProveiderLocal.ENDERECO_LOCAL, BDTableLocal.TODOS_CAMPOS_LOCAL, null, null, BDTableLocal.CAMPO_LOCAL_NOME);
+        return new CursorLoader(this, ContentProviderLocal.ENDERECO_LOCAL, BDTableLocal.TODOS_CAMPOS_LOCAL, null, null, BDTableLocal.CAMPO_LOCAL_NOME);
     }
 
     /**

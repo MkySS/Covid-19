@@ -45,7 +45,7 @@ public class CriarLocal extends AppCompatActivity implements LoaderManager.Loade
                 this,
                 android.R.layout.simple_spinner_item,
                 data,
-                new String[]{BDTableRegiao.CAMPO_NOME_DISTRITO},
+                new String[]{BDTableRegiao.CAMPO_DISTRITO},
                 new int[]{android.R.id.text1}
         );
         spinnerDistrito.setAdapter(adapter);
@@ -88,7 +88,7 @@ public class CriarLocal extends AppCompatActivity implements LoaderManager.Loade
         local.setId_regiao(idRegiao);
 
         try{
-            this.getContentResolver().insert(ContentProveiderLocal.ENDERECO_LOCAL, Converte.localToContentValues(local));
+            this.getContentResolver().insert(ContentProviderLocal.ENDERECO_LOCAL, Converte.localToContentValues(local));
             Toast.makeText(this, "Noticia Inserida", Toast.LENGTH_SHORT).show();
         }catch (Exception e){
             Toast.makeText(this, "Erro de Inserção", Toast.LENGTH_SHORT).show();
@@ -113,7 +113,7 @@ public class CriarLocal extends AppCompatActivity implements LoaderManager.Loade
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        return new CursorLoader(this, ContentProveiderLocal.ENDERECO_REGIAO, BDTableRegiao.TODOS_CAMPOS_REGIAO,null,null,null);
+        return new CursorLoader(this, ContentProviderLocal.ENDERECO_REGIAO, BDTableRegiao.TODOS_CAMPOS_REGIAO,null,null,null);
 
     }
 

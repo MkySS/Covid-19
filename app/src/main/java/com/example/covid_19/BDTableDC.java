@@ -7,12 +7,12 @@ import android.provider.BaseColumns;
 
 public class BDTableDC implements BaseColumns{
     public static final String NOME_TABELA_DC = "DC";
-    public static final String CAMPO_NOME_DC = "Nome";
+    public static final String CAMPO_DOENCA_CRONICA = "DCN";
 
     public static final String CAMPO_ID_COMPLETO = NOME_TABELA_DC + "." + _ID;
-    public static final String CAMPO_NOME_DC_COMPLETO = NOME_TABELA_DC + "." + CAMPO_NOME_DC;
+    public static final String CAMPO_NOME_DOENCA_CRONICA = NOME_TABELA_DC + "." + CAMPO_DOENCA_CRONICA;
 
-    public static final String[] TODOS_CAMPOS_DC = {CAMPO_ID_COMPLETO, CAMPO_NOME_DC_COMPLETO};
+    public static final String[] TODOS_CAMPOS_DC = {CAMPO_ID_COMPLETO, CAMPO_NOME_DOENCA_CRONICA};
 
     private SQLiteDatabase db;
 
@@ -24,7 +24,7 @@ public class BDTableDC implements BaseColumns{
         db.execSQL(
                 "CREATE TABLE " + NOME_TABELA_DC + " (" +
                         _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        CAMPO_NOME_DC + " TEXT NOT NULL" +
+                        CAMPO_DOENCA_CRONICA + " TEXT NOT NULL" +
                         ")"
         );
     }

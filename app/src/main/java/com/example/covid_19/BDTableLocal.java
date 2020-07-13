@@ -20,7 +20,7 @@ public class BDTableLocal implements BaseColumns {
     public static final String CAMPO_NOME_RUA_COMPLETO = NOME_TABELA_LOCAL + "." + CAMPO_NOME_RUA;
     public static final String CAMPO_ID_REGIAO_COMPLETO = NOME_TABELA_LOCAL + "." + ID_REGIAO;
     public static final String CAMPO_TIPO_COMPLETO = NOME_TABELA_LOCAL + "." + CAMPO_LOCAL_TIPO;
-    public static final String CAMPO_DISTRITO_COMPLETO = BDTableRegiao.NOME_TABELA_REGIAO + "." + BDTableRegiao.CAMPO_NOME_DISTRITO;
+    public static final String CAMPO_DISTRITO_COMPLETO = BDTableRegiao.NOME_TABELA_REGIAO + "." + BDTableRegiao.CAMPO_DISTRITO;
 
     public static final String[] TODOS_CAMPOS_LOCAL = {CAMPO_ID_COMPLETO, CAMPO_LOCAL_NOME_COMPLETO, CAMPO_NOME_RUA_COMPLETO, CAMPO_DISTRITO_COMPLETO, CAMPO_ID_REGIAO_COMPLETO,CAMPO_TIPO_COMPLETO};
 
